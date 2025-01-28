@@ -139,9 +139,8 @@ export async function authenticate(
           return 'Something went wrong.';
       }
     }
-    throw error;
+    throw error;      
   }
 }
 
-  // Test it out:
-  //console.log(rawFormData);
+
