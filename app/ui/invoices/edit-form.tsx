@@ -23,9 +23,9 @@ export default function EditInvoiceForm({
 
   const initialState: State = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const [ formAction] = useActionState(updateInvoiceWithId, initialState);
+  const [error, action, isPending ] = useActionState(updateInvoiceWithId, initialState);
 
-  return <form action={formAction}>
+  return <form action={action}>
       <div className="rounded-md bg-gray- 50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
