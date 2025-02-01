@@ -14,14 +14,17 @@ import { useActionState } from 'react';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createInvoice, initialState);
+  const [state, formAction] = useActionState(async (_, formData: FormData) => {
+    return await createInvoice(formData);
+  }, initialState);
+  
 
   return <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
-            Choose customer
+            Choose customer 
           </label>
           <div className="relative">
             <select
